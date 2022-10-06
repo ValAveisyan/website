@@ -1,0 +1,19 @@
+<nav class="navbar bg-primary p-3" >
+    <a routerLink="/admin" class='navbar-brand fs-3  text-white fw-bold'>{{title}}</a>
+    <ul class="nav navbar-pills">
+        <input type="search" class="search">
+        <li><a href="#" class="nav-link text-white fw-bold" routerLink="/admin/home">Home</a></li>
+        <li><a href="#" class="nav-link text-white fw-bold" routerLink="/admin/contacts" >Contacts</a></li>
+        <li><img class="rounded-circle" (click)="menuOpen()"
+                 [src]="img" alt=""
+                 style="height: 50px; width: 50px"></li>
+    </ul>
+
+
+</nav>
+
+
+<div *ngIf="menu" class="menu d-flex flex-column">
+    <div><a class="nav-link text-white fw-bold" routerLink="/admin/myAccount">My Account</a></div>
+    <div><a  class="nav-link text-white fw-bold"  (click)="logout()">Logout</a></div>
+</div>

@@ -1,0 +1,44 @@
+<div class="row w-100" style="background-color:rgba(128,128,128,0.1)">
+    <div class="col-lg-2 border shadow mt-5 p-4">
+        <app-left-navigate *ngFor="let product of products" [product]="product"></app-left-navigate>
+    </div>
+    <div class="col-lg-6" style="margin-left: 50px">
+        <div class="d-flex justify-content-center " (click)="modalService.open()">
+            <div class="bg-white w-75 h-25 mt-4 p-4 shadow">
+                <p class="opacity-75">Write a note...</p>
+            </div>
+        </div>
+        <div class="mt-3" *ngIf="userData">
+            <div *ngIf="loading" class="text-center">
+                <div class="loader">
+                    <div class="loader-inner">
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                        <div class="loader-line-wrap">
+                            <div class="loader-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-main *ngFor="let user of userData"
+                      [user]="user">
+            </app-main>
+        </div>
+    </div>
+</div>
+
+<app-modal *ngIf="modalService.idVisible$ | async" title="Create a publication">
+    <app-create-post></app-create-post>
+</app-modal>
+
+<app-create-comment *ngIf="modalService.idVisible$2 | async"></app-create-comment>

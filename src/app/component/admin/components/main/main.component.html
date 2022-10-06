@@ -1,0 +1,49 @@
+<div class="container bg-white p-2 mt-4 shadow" style="border-radius: 10px">
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-lg-2">
+                    <img [src]="user.avatar" alt="" style="height: 50px;width: 50px; border-radius: 50%">
+                </div>
+                <div class="col-lg-10">
+                    <p>{{user.name}} <br> {{user.role}} </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <button (click)="deletePost(user.id)" class="btn btn-danger">Delete Post</button>
+        </div>
+    </div>
+
+    <div class="mt-1 p-1"> {{user.comment}}
+    </div>
+
+    <div class="mt-2">
+        <img [src]="user.img" alt="" style="width: 100%; border-radius: 10px">
+    </div>
+
+    <div class="d-flex p-2 mt-1">
+        <button (click)="lik()" class="btn btn-primary"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            Like | <span>{{like ? 1 : 0}}</span>
+        </button>
+        <button (click)="modalService.opn()"  class="btn-primary btn" style="margin-left: 20px">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+            Comment
+        </button>
+    </div>
+
+    <div *ngIf="comment">
+        <div class="row">
+            <div class="col-lg-2">
+                <img [src]="user.avatar" alt="" style="height: 50px;width: 50px; border-radius: 50%">
+            </div>
+            <div class="col-lg-10">
+                <p>{{user.name}} <br> {{user.role}} </p>
+            </div>
+        </div>
+        <div class="mt-1 p-1">
+            {{user.comment}}
+        </div>
+    </div>
+</div>

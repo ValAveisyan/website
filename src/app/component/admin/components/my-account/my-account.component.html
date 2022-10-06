@@ -1,0 +1,21 @@
+<div class="container-fluid" *ngFor="let user of userData"
+     style=" background-color:rgba(128,128,128,0.1)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 p-5 border shadow mt-3 mb-4 bg-white rounded">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img [src]="user.img" alt="" class="rounded-circle" style="width: 168px;height: 168px">
+                    </div>
+                    <div class="col-lg-9">
+                        <h3>{{user.name}}</h3>
+                        <p>{{user.role}}</p>
+                        <p>{{user.bio}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

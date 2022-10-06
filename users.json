@@ -1,0 +1,39 @@
+{
+  "Users": [
+    {
+      "name": "Jon Snow",
+      "id": 1,
+      "role": "admin",
+      "avatar": "https://cdn.lorem.space/images/face/.cache/640x480/pexels-roberto-hund-5357589.jpg",
+      "img": "https://api.lorem.space/image/face?w=640&h=480&r=3965",
+      "comment": "nuts, almonds, seeds"
+    },
+    {
+      "name": "Robert",
+      "id": 2,
+      "role": "customer",
+      "avatar": "https://api.lorem.space/image/face?w=640&h=480&r=3965",
+      "img": "https://cdn.lorem.space/images/face/.cache/640x480/pexels-roberto-hund-5357589.jpg",
+      "comment": "Beautiful city"
+    },
+    {
+      "name": "Lamarik",
+      "id": 3,
+      "role": "admin",
+      "avatar": "https://api.lorem.space/image/face?w=640&h=480&r=2187",
+      "img": "https://api.lorem.space/image/face?w=640&h=480&r=2187",
+      "comment": "This is my Home"
+    }
+  ],
+  "myAccount": [
+    {
+      "name": "Val Avetisyan",
+      "id": "-(new Date().getTime())",
+      "role": "Admin",
+      "avatar": "",
+      "img": "../assets/img/banner.jpg",
+      "comment": "this is my acc",
+      "bio": "I love Football"
+    }
+  ]
+}
