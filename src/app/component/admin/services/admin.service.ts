@@ -14,7 +14,7 @@ export class AdminService {
 	}
 
 	newPost: IUser[] = [];
-	url: string = "http://localhost:3000/Users";
+	url: string = "assets/users.json";
 
 	getPersonalList() {
 		return this.http.get<IUser[]>(this.url,
@@ -26,14 +26,9 @@ export class AdminService {
 		)
 	}
 
-
 	create(post: IUser) {
 		return this.http.post<IUser>(this.url, post).pipe(
 			tap(user => this.newPost.unshift(user))
 		)
 	}
-
-
-
-
 }

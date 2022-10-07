@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       'checkBox': new FormControl('', [Validators.required]),
       'email': new FormControl('', [Validators.required, Validators.email]),
-      ['password']: new FormControl('', [Validators.required, Validators.pattern(
+      'password': new FormControl('', [Validators.required, Validators.pattern(
           "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")]),
     });
 

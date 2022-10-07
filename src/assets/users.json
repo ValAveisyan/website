@@ -1,5 +1,4 @@
-{
-  "Users": [
+ [
     {
       "name": "Jon Snow",
       "id": 1,
@@ -24,16 +23,4 @@
       "img": "https://api.lorem.space/image/face?w=640&h=480&r=2187",
       "comment": "This is my Home"
     }
-  ],
-  "myAccount": [
-    {
-      "name": "Val Avetisyan",
-      "id": "-(new Date().getTime())",
-      "role": "Admin",
-      "avatar": "",
-      "img": "../assets/img/banner.jpg",
-      "comment": "this is my acc",
-      "bio": "I love Football"
-    }
-  ]
-}
+ ]

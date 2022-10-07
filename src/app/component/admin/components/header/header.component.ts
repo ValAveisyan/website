@@ -1,32 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {MyAccService} from "../../services/my-acc.service";
+import {IUser} from "../../data/user";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+	selector: 'app-header',
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 
-  public title:string = "ValBooK";
+	public title: string = "ValBooK";
 
-  constructor(private route:Router) { }
+	constructor(private route: Router,public usersService: MyAccService) {
+	}
 
-  ngOnInit(): void {
-  }
-  img = "../assets/img/banner.jpg";
+	ngOnInit(): void {
+		this.usersService.getPersonalList().subscribe(data => {
+			this.userData = data
+		})
+	}
 
-  logout(){
-    this.route.navigate(['login'])
-  }
+	public userData!: IUser;
 
-  menu:boolean = false;
+	logout() {
+		this.route.navigate(['login'])
+	}
 
-  menuOpen(){
-    this.menu = !this.menu
-  }
+	public menu: boolean = false;
 
-
-
-
+	menuOpen() {
+		this.menu = !this.menu
+	}
 }
