@@ -1,38 +1,56 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IUser} from "../../data/user";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {IComments, IUser} from "../../data/user";
 import {AdminService} from "../../services/admin.service";
 import {ModalService} from "../../services/modal.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+	selector: 'app-main',
+	templateUrl: './main.component.html',
+	styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
 
-  constructor(public modalService:ModalService,public service:AdminService) { }
+	@Input() user!: IUser;
 
-  ngOnInit(): void {
-  }
+	constructor( public service: AdminService) {
+	}
+	userData!:IUser[];
 
-  public like:boolean = false;
-  public comment:boolean = false;
-
-  lik(){
-    this.like = !this.like
-  };
-  com(){
-    this.comment = !this.comment
-  };
+	ngOnInit(): void {
+		this.service.getPersonalList().subscribe(data => this.userData = data);
+	}
 
 
-  @Input() user!:IUser;
+	public like: boolean = false;
 
-  deletePost(id:number){
-    const idx = this.service.newPost.findIndex((item)=> item.id === id);
-    if (idx !== 1) {
-      this.service.newPost.splice(idx , 1)
-    }
-  }
+	clickLike() {
+		this.like = !this.like;
+	};
+
+	form = new FormGroup({
+		com:new FormControl<string>('')
+	});
+
+	public showTF:boolean = false;
+	public userComments!:IComments[];
+
+	show(u:string):void{
+		this.showTF = !this.showTF;
+		const idUser = this.service.Post.findIndex(us=> us.name === u);
+		this.userComments = this.userData[idUser].comments;
+	}
+
+	sub(u:string){
+		const idUser = this.service.Post.findIndex(us=> us.name === u);
+		this.userComments = this.userData[idUser].comments;
+		console.log(this.userComments);
+		this.userComments.push({
+			name:'Val Avetisyan',
+			avatar:'../assets/img/banner.jpg',
+			com:this.form.value.com as string
+		})
+	}
+
 }

@@ -1,43 +1,44 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanDeactivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree
+	ActivatedRouteSnapshot,
+	CanActivate,
+	CanDeactivate,
+	Router,
+	RouterStateSnapshot,
+	UrlTree
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {AuthService} from "../services/auth.service";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
 
-  constructor(private service:AuthService,private router:Router){}
+	constructor(private service: AuthService, private router: Router) {
+	}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.service.idLoggedIn()){
-      this.router.navigate(['login']);
-      return false
-    }
-    return true
-  }
+	canActivate(
+		route: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+		if (!this.service.idLoggedIn()) {
+			this.router.navigate(['login']);
+			return false
+		}
+		return true
+	}
 
-  canDeactivate(
-    component: unknown,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (confirm('Are you sure?')){
-      localStorage.removeItem('token');
-      return true
-    }
-    return false
-  }
+	canDeactivate(
+		component: unknown,
+		currentRoute: ActivatedRouteSnapshot,
+		currentState: RouterStateSnapshot,
+		nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+		if (confirm('Are you sure?')) {
+			localStorage.removeItem('token');
+			return true
+		}
+		return false
+	}
 
-  
+
 }

@@ -32,8 +32,6 @@ export class LoginComponent implements OnInit {
           "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")]),
     });
 
-    if (this.authService.idLoggedIn()){
-      this.router.navigate(['admin'])
-    }
+
   }
 }

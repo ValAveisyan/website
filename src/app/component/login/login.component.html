@@ -1,13 +1,11 @@
 <!-- Section: Design Block -->
 <section class="background-radial-gradient overflow-hidden">
-
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
         <div class="row gx-lg-5 align-items-center mb-5">
             <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                 <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-
                     The best page
-                    <br />
+                    <br/>
                     <span style="color: hsl(218, 81%, 75%)">Of the World</span>
                 </h1>
                 <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
@@ -24,14 +22,14 @@
 
                 <div class="card bg-glass">
                     <div class="card-body  py-lg-5 px-lg-5">
-                        <form class="py-lg-5" [formGroup]="loginForm" (ngSubmit) = "submitLogin()">
+                        <form class="py-lg-5" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
 
 
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input formControlName = "email" type="email" id="form3Example3" class="form-control" />
+                                <input formControlName="email" type="email" id="form3Example3" class="form-control"/>
                                 <label class="form-label" for="form3Example3">Email address</label>
-                                <p class="text-danger fw-bold" *ngIf ="this.loginForm.get('email')?.invalid &&
+                                <p class="text-danger fw-bold" *ngIf="this.loginForm.get('email')?.invalid &&
                                  this.loginForm.get('email')?.touched ">
                                     Email Required
                                 </p>
@@ -39,9 +37,10 @@
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input formControlName = 'password' type="password" id="form3Example4" class="form-control" />
+                                <input formControlName='password' type="password" id="form3Example4"
+                                       class="form-control"/>
                                 <label class="form-label" for="form3Example4">Password</label>
-                                <p class="text-danger fw-bold" *ngIf ="this.loginForm.get('password')?.invalid &&
+                                <p class="text-danger fw-bold" *ngIf="this.loginForm.get('password')?.invalid &&
                                  this.loginForm.get('password')?.touched ">
                                     Password Required
                                 </p>
@@ -49,7 +48,8 @@
 
                             <!-- Checkbox -->
                             <div class="form-check   mb-4">
-                                <input formControlName = 'checkBox' class="form-check-input me-2"  type="checkbox" value="" id="form2Example33"  />
+                                <input formControlName='checkBox' class="form-check-input me-2" type="checkbox" value=""
+                                       id="form2Example33"/>
                                 <label class="form-check-label" for="form2Example33">
                                     Remember Me
                                 </label>
@@ -59,7 +59,7 @@
 
                             <p>Or Register <a routerLink="/register" style="text-decoration: none">Here</a></p>
 
-                            <!-- Submit button -->
+                            <!-- Submit btn -->
                             <button type="submit" class="btn btn-primary btn-block mb-4">
                                 Sign up
                             </button>

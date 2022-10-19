@@ -1,32 +1,31 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of, throwError} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {}
+	constructor() {}
 
-  setToken(token:string){
-     localStorage.setItem('token', token)
-  }
+	setToken(token: string) {
+		localStorage.setItem('token', token)
+	}
 
-  getToken(){
-    return localStorage.getItem('token')
-  }
+	getToken() {
+		return localStorage.getItem('token')
+	}
 
-  idLoggedIn(){
-    return this.getToken() !== null
-  }
-  
-  login(userInfo:{email:string,password:string}):Observable<string | boolean>{
+	idLoggedIn() {
+		return this.getToken() !== null
+	}
 
-    if (userInfo.email === 'admin@mail.ru' &&
-        userInfo.password === 'admin1234') {
-      this.setToken('ok');
-      return of(true)
-    }
-    return throwError(()=> new Error('Failed login'))
-  }
+	login(userInfo: { email: string, password: string }): Observable<string | boolean> {
+		 if (userInfo.email === 'admin@mail.ru' &&
+			userInfo.password === 'admin1234') {
+			this.setToken('ok');
+			return of(true)
+		}
+		return throwError(() => new Error('Failed login'))
+	}
 }

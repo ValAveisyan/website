@@ -8,7 +8,7 @@
                 <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
 
                     The best page
-                    <br />
+                    <br/>
                     <span style="color: hsl(218, 81%, 75%)">Of the World</span>
                 </h1>
                 <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
@@ -25,33 +25,35 @@
 
                 <div class="card bg-glass">
                     <div class="card-body  py-lg-5 px-lg-5">
-                        <form class="py-lg-5"  [formGroup]="regForm" (ngSubmit) = 'submitReg()'>
+                        <form class="py-lg-5" [formGroup]="regForm" (ngSubmit)='submitReg()'>
 
 
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input formControlName = 'firstName' type="text" id="form3Example1cg" class="form-control form-control-lg"/>
+                                <input formControlName='firstName' type="text" id="form3Example1cg"
+                                       class="form-control form-control-lg"/>
                                 <label class="form-label" for="form3Example1cg">Your Name</label>
-                                <p class="text-danger fw-bold" *ngIf ="this.regForm.get('firstName')?.invalid &&
+                                <p class="text-danger fw-bold" *ngIf="this.regForm.get('firstName')?.invalid &&
                                  this.regForm.get('firstName')?.touched ">
                                     Name Required
                                 </p>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input formControlName = 'email' type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                                <input formControlName='email' type="email" id="form3Example3cg"
+                                       class="form-control form-control-lg"/>
                                 <label class="form-label" for="form3Example3cg">Your Email</label>
-                                <p class="text-danger fw-bold" *ngIf ="this.regForm.get('email')?.invalid &&
+                                <p class="text-danger fw-bold" *ngIf="this.regForm.get('email')?.invalid &&
                                  this.regForm.get('email')?.touched ">
                                     Email Required
                                 </p>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input formControlName = 'password' type="password"
-                                       id="form3Example4cg" class="form-control form-control-lg" />
+                                <input formControlName='password' type="password"
+                                       id="form3Example4cg" class="form-control form-control-lg"/>
                                 <label class="form-label" for="form3Example4cg">Password</label>
-                                <p class="text-danger fw-bold" *ngIf ="this.regForm.get('password')?.invalid &&
+                                <p class="text-danger fw-bold" *ngIf="this.regForm.get('password')?.invalid &&
                                  this.regForm.get('password')?.touched ">
                                     Password Required
                                 </p>
@@ -59,9 +61,10 @@
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input formControlName = 'password' type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                                <input formControlName='password' type="password" id="form3Example4cdg"
+                                       class="form-control form-control-lg"/>
                                 <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                                <p class="text-danger fw-bold" *ngIf ="this.regForm.get('password')?.invalid &&
+                                <p class="text-danger fw-bold" *ngIf="this.regForm.get('password')?.invalid &&
                                  this.regForm.get('password')?.touched ">
                                     Password Required
                                 </p>
@@ -71,9 +74,9 @@
                                 <div class="col-md-6 mb-4">
 
                                     <div class="form-outline datepicker">
-                                        <input type="number" min="8" class="form-control" id="exampleDatepicker1" />
+                                        <input type="number" min="8" class="form-control" id="exampleDatepicker1"/>
                                         <label for="exampleDatepicker1" class="form-label">age</label>
-                                        <p class="text-danger fw-bold" *ngIf ="this.regForm.get('age')?.invalid &&
+                                        <p class="text-danger fw-bold" *ngIf="this.regForm.get('age')?.invalid &&
                                  this.regForm.get('age')?.touched ">
                                             Age Required
                                         </p>
@@ -83,13 +86,21 @@
                                 <div class="col-md-6 mb-4">
 
                                     <select id="select" class="select col-lg-12 h-auto  form-control">
-                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="1" disabled>Gender</option>
-                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="2">Female</option>
-                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="3">Male</option>
-                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="4">Other</option>
+                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="1"
+                                                disabled>Gender
+                                        </option>
+                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="2">
+                                            Female
+                                        </option>
+                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="3">
+                                            Male
+                                        </option>
+                                        <option style="background-color: rgba(0,0,0,0.7)" class="text-white" value="4">
+                                            Other
+                                        </option>
                                     </select>
                                     <label for="select">Gender</label>
-                                    <p class="text-danger fw-bold" *ngIf ="this.regForm.get('gender')?.invalid &&
+                                    <p class="text-danger fw-bold" *ngIf="this.regForm.get('gender')?.invalid &&
                                  this.regForm.get('gender')?.touched ">
                                         Gender Required
                                     </p>
@@ -99,7 +110,7 @@
                             <p>Already have Account? <a routerLink="/login">LogIn</a></p>
 
 
-                            <!-- Submit button -->
+                            <!-- Submit btn -->
                             <button type="submit" class="btn btn-primary btn-block mb-4">
                                 Sign In
                             </button>

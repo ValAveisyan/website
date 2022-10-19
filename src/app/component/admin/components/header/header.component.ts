@@ -12,7 +12,8 @@ export class HeaderComponent implements OnInit {
 
 	public title: string = "ValBooK";
 
-	constructor(private route: Router,public usersService: MyAccService) {
+	constructor(private route: Router,
+				public usersService: MyAccService) {
 	}
 
 	ngOnInit(): void {
@@ -21,15 +22,12 @@ export class HeaderComponent implements OnInit {
 		})
 	}
 
-	public userData!: IUser;
+	public userData!: IUser[];
 
 	logout() {
 		this.route.navigate(['login'])
 	}
 
-	public menu: boolean = false;
 
-	menuOpen() {
-		this.menu = !this.menu
-	}
+
 }

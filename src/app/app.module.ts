@@ -8,6 +8,7 @@ import {NotFoundComponent} from './component/not-found/not-found.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RegisterComponent} from './component/register/register.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -21,7 +22,8 @@ import {RegisterComponent} from './component/register/register.component';
 		AppRoutingModule,
 		ReactiveFormsModule,
 		HttpClientModule,
-		FormsModule
+		FormsModule,
+		BrowserAnimationsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent],

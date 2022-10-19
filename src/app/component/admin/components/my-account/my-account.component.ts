@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IUser} from "../../data/user";
 import {MyAccService} from "../../services/my-acc.service";
+import {AdminService} from "../../services/admin.service";
 
 @Component({
 	selector: 'app-my-account',
@@ -9,14 +10,22 @@ import {MyAccService} from "../../services/my-acc.service";
 })
 export class MyAccountComponent implements OnInit {
 
-	constructor(public usersService: MyAccService) {
+	constructor(public userService: MyAccService, private usersService: AdminService) {
 	}
 
-	ngOnInit() {
-		this.usersService.getPersonalList().subscribe(data => {
-			this.userData = data
-		})
+	ngOnInit(): void {
+		this.userService.getPersonalList().subscribe(sub => this.userData = sub);
+		this.usersService.getPersonalList().subscribe(sub => this.users = sub);
+
 	}
 
-	public userData!: IUser;
+	userData!: IUser[];
+
+      sub(){
+		  this.idUser = this.usersService.Post.filter(u => u.name === 'Val Avetisyan');
+		  console.log(this.idUser);
+	  }
+	idUser!: IUser[];
+
+	users!: IUser[]
 }

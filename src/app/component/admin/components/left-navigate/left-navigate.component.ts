@@ -12,6 +12,10 @@ export class LeftNavigateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  @Input()product!:ILeftNavigate
+  @Input()product!:ILeftNavigate;
+
+  sub(){
+    alert('not ready yet')
+  }
 
 }

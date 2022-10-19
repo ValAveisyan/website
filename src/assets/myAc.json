@@ -1,10 +1,12 @@
-
-{
-"name": "Val Avetisyan",
-"id": "-(new Date().getTime())",
-"role": "Admin",
-"avatar": "",
-"img": "../assets/img/banner.jpg",
-"comment": "this is my acc",
-"bio": "I love Football"
-}
+[
+  {
+    "name": "Val Avetisyan",
+    "id": "-(new Date().getTime())",
+    "role": "Admin",
+    "avatar": "",
+    "img": "../assets/img/banner.jpg",
+    "comment": "this is my acc",
+    "bio": "I love Football",
+    "like": "78"
+  }
+]

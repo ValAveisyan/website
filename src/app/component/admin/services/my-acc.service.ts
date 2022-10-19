@@ -11,13 +11,13 @@ export class MyAccService {
 
   constructor(public http:HttpClient) { }
 
-  Iam!: IUser;
-  url: string = "assets/myAc.json";
+  data:IUser[]=[];
+  url: string = 'assets/myAc.json';
 
-  getPersonalList(): Observable<IUser> {
-    return this.http.get<IUser>(this.url).pipe(
+  getPersonalList() {
+    return this.http.get<IUser[]>(this.url).pipe(
         delay(200),
-        tap(url => this.Iam = url)
+        tap(d => this.data = d)
     )
   }
 }
