@@ -1,12 +1,11 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ILeftNavigate} from "../../data/products";
 import {leftNavigation} from "../product/products";
 import {AdminService} from "../../services/admin.service";
-import {IUser} from "../../data/user";
+import {IComments, IUser} from "../../data/user";
 import {Observable} from "rxjs";
 import {ModalService} from "../../services/modal.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {interval} from "rxjs";
 
 
 @Component({
@@ -41,6 +40,8 @@ export class HomeComponent implements OnInit {
 			console.log(this.userData === this.usersService.Post);
 		});
 
+
+
 		localStorage.getItem('data');
 	}
 
@@ -62,6 +63,9 @@ export class HomeComponent implements OnInit {
 				like: 0,
 				caption: this.form.value.com
 			});
+
+		let data: string = JSON.stringify(this.userData);
+		localStorage.setItem('data', data);
 	}
 
 	products: ILeftNavigate[] = leftNavigation;
@@ -77,13 +81,6 @@ export class HomeComponent implements OnInit {
 		this.userData.splice(idx, 1);
 	}
 
+	public userComments!:IComments[];
 
-	saveData() {
-		let data: string = JSON.stringify(this.userData);
-		localStorage.setItem('data', data);
-	}
-
-
-	loadData() {
-	}
 }

@@ -45,12 +45,14 @@
                     </div>
                 </div>
             </div>
-            <button (click)="saveData()">save</button>
-            <button (click)="loadData()">load</button>
+            <!--<button (click)="saveData()">save</button>-->
+            <!--<button (click)="loadData()">load</button>-->
 
             <app-main *ngFor="let user of userData | filterUsers:term"
                       [user]="user">
-                <app-delete-btn (click)="deletePost(user.id)"></app-delete-btn>
+                <app-delete-btn (click)="deletePost(user.id)">
+
+                </app-delete-btn>
             </app-main>
         </div>
     </div>

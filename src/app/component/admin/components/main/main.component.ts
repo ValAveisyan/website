@@ -13,13 +13,13 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class MainComponent implements OnInit {
 
 	@Input() user!: IUser;
+	@Input() userCom!:IUser;
 
 	constructor( public service: AdminService) {
 	}
-	userData!:IUser[];
 
 	ngOnInit(): void {
-		this.service.getPersonalList().subscribe(data => this.userData = data);
+
 	}
 
 
@@ -33,24 +33,24 @@ export class MainComponent implements OnInit {
 		com:new FormControl<string>('')
 	});
 
-	public showTF:boolean = false;
-	public userComments!:IComments[];
-
-	show(u:string):void{
-		this.showTF = !this.showTF;
-		const idUser = this.service.Post.findIndex(us=> us.name === u);
-		this.userComments = this.userData[idUser].comments;
-	}
-
-	sub(u:string){
-		const idUser = this.service.Post.findIndex(us=> us.name === u);
-		this.userComments = this.userData[idUser].comments;
-		console.log(this.userComments);
-		this.userComments.push({
-			name:'Val Avetisyan',
-			avatar:'../assets/img/banner.jpg',
-			com:this.form.value.com as string
-		})
-	}
+	// public showTF:boolean = false;
+	// public userComments!:IComments[];
+	//
+	// show(u:string):void{
+	// 	this.showTF = !this.showTF;
+	// 	const idUser = this.service.Post.findIndex(us=> us.name === u);
+	// 	this.userComments = this.userData[idUser].comments;
+	// }
+	//
+	// sub(u:string){
+	// 	const idUser = this.service.Post.findIndex(us=> us.name === u);
+	// 	this.userComments = this.userData[idUser].comments;
+	// 	console.log(this.userComments);
+	// 	this.userComments.push({
+	// 		name:'Val Avetisyan',
+	// 		avatar:'../assets/img/banner.jpg',
+	// 		com:this.form.value.com as string
+	// 	})
+	// }
 
 }

@@ -11,10 +11,11 @@ import {of} from "rxjs";
 })
 export class AdminService {
 
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {
+	}
 
 	Post: IUser[] = [];
-	url:string = "./assets/users.json";
+	url: string = "./assets/users.json";
 
 	getPersonalList() {
 		return this.http.get<IUser[]>(this.url,
@@ -26,7 +27,13 @@ export class AdminService {
 		);
 	}
 
-	create(post: IUser):Observable<number> {
-		return of(this.Post.unshift(post))
+	create(post: IUser): Observable<number> {
+		localStorage.getItem('data');
+		return of(this.Post.unshift(post));
 	}
+
+
+
+
+
 }
