@@ -1,17 +1,10 @@
 <div class="row w-100" style="background-color:rgba(128,128,128,0.1)">
+
     <div class="col-lg-2 border shadow mt-5 p-4">
         <app-left-navigate *ngFor="let product of products" [product]="product"></app-left-navigate>
     </div>
 
-    <div class="inputDiv">
-        <input type="search"
-               class="search"
-               placeholder="Search post..."
-               [(ngModel)]="term" (click)="test()">
-    </div>
-
     <div class="col-lg-6" style="margin-left: 50px">
-
         <div class="d-flex justify-content-center">
             <form [formGroup]="form" (ngSubmit)="submit()">
                 <input type="text" formControlName="com"
@@ -23,42 +16,10 @@
             </form>
         </div>
 
-        <div class="mt-3" *ngIf="userData">
-            <div *ngIf="loading" class="text-center">
-                <div class="loader">
-                    <div class="loader-inner">
-                        <div class="loader-line-wrap">
-                            <div class="loader-line"></div>
-                        </div>
-                        <div class="loader-line-wrap">
-                            <div class="loader-line"></div>
-                        </div>
-                        <div class="loader-line-wrap">
-                            <div class="loader-line"></div>
-                        </div>
-                        <div class="loader-line-wrap">
-                            <div class="loader-line"></div>
-                        </div>
-                        <div class="loader-line-wrap">
-                            <div class="loader-line"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--<button (click)="saveData()">save</button>-->
-            <!--<button (click)="loadData()">load</button>-->
+        <app-main></app-main>
 
-            <app-main *ngFor="let user of userData | filterUsers:term"
-                      [user]="user">
-                <app-delete-btn (click)="deletePost(user.id)">
-
-                </app-delete-btn>
-            </app-main>
-        </div>
     </div>
 </div>
 
-<app-modal *ngIf="modalService.idVisible$ | async" title="Create a publication">
 
-</app-modal>
 

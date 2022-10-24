@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ILeftNavigate} from "../../data/products";
-import {leftNavigation} from "../product/products";
+import {leftNavigation} from "../../data/product/products";
 import {AdminService} from "../../services/admin.service";
-import {IComments, IUser} from "../../data/user";
 import {Observable} from "rxjs";
-import {ModalService} from "../../services/modal.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {IUser} from "../../data/user";
 
 
 @Component({
@@ -15,11 +14,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class HomeComponent implements OnInit {
 
-	public userData: IUser[] = [];
-	public loading: boolean = false;
 
-	constructor(public modalService: ModalService,
-				public usersService: AdminService) {
+	constructor(public usersService: AdminService) {
 	}
 
 	form: FormGroup = new FormGroup({
@@ -27,60 +23,34 @@ export class HomeComponent implements OnInit {
 			Validators.required,
 			Validators.minLength(7),
 			Validators.pattern("[a-zA-Z ]*")]),
+		img:new FormControl<string>('')
 	});
 
-	term: string = '';
-
 	ngOnInit(): void {
-		this.loading = true;
-
-		this.usersService.getPersonalList().subscribe((data) => {
-			this.userData = data;
-			this.loading = false;
-			console.log(this.userData === this.usersService.Post);
-		});
-
-
-
-		localStorage.getItem('data');
 	}
 
 	private img: string = "../assets/img/banner.jpg";
 
 	submit() {
+
 		this.usersService.create(
 			{
 				name: 'Val Avetisyan',
 				id: -(new Date().getTime()),
 				role: 'Admin',
 				avatar: this.img,
-				img: this.img,
+				img: "../assets/img/pic.jpg",
 				comments: [{
 					name: 'Val',
-					avatar: '../assets/img/banner.jpg',
+					avatar: "../assets/img/pic.jpg",
 					com: 'hello'
 				}],
 				like: 0,
 				caption: this.form.value.com
 			});
 
-		let data: string = JSON.stringify(this.userData);
-		localStorage.setItem('data', data);
 	}
 
 	products: ILeftNavigate[] = leftNavigation;
-
-	test(): void {
-		console.log(this.userData === this.usersService.Post);
-		console.log(this.usersService.Post);
-		console.log(this.userData);
-	}
-
-	deletePost(id: number) {
-		const idx = this.userData.findIndex((item) => item.id === id);
-		this.userData.splice(idx, 1);
-	}
-
-	public userComments!:IComments[];
 
 }

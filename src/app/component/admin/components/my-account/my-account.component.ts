@@ -10,22 +10,22 @@ import {AdminService} from "../../services/admin.service";
 })
 export class MyAccountComponent implements OnInit {
 
-	constructor(public userService: MyAccService, private usersService: AdminService) {
+	constructor(private usersService: AdminService) {
 	}
+
+	public users!: IUser[];
 
 	ngOnInit(): void {
-		this.userService.getPersonalList().subscribe(sub => this.userData = sub);
-		this.usersService.getPersonalList().subscribe(sub => this.users = sub);
-
+		this.usersService.getPersonalList().subscribe(() => this.users = this.usersService.Post.filter(
+			u => u.name === 'Val Avetisyan'));
 	}
 
-	userData!: IUser[];
+	public like: boolean = false;
 
-      sub(){
-		  this.idUser = this.usersService.Post.filter(u => u.name === 'Val Avetisyan');
-		  console.log(this.idUser);
-	  }
-	idUser!: IUser[];
+	clickLike() {
+		this.like = !this.like;
+	};
 
-	users!: IUser[]
+	public img: string = "../assets/img/banner.jpg";
+
 }

@@ -3,8 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {IUser} from "../data/user";
 import {Observable} from "rxjs";
 import {delay, tap} from "rxjs/operators";
-import {pipe} from "rxjs";
-import {of} from "rxjs";
+import {pipe, of} from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -23,17 +22,24 @@ export class AdminService {
 				params: {'limit': 5}
 			}).pipe(
 			delay(200),
-			tap(posts => this.Post = posts)
+			tap((data) => {
+				this.Post = data;
+				let get: any = localStorage.getItem('data');
+				if (get) this.Post = JSON.parse(get);
+			})
 		);
 	}
 
+
 	create(post: IUser): Observable<number> {
-		localStorage.getItem('data');
-		return of(this.Post.unshift(post));
+		let result = this.Post.unshift(post);
+		this.setUser();
+		return of(result)
 	}
 
-
-
-
+	setUser() {
+		let data: string = JSON.stringify(this.Post);
+		localStorage.setItem('data', data);
+	}
 
 }
