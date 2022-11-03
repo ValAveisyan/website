@@ -45,3 +45,18 @@
     background-color: hsla(0, 0%, 100%, 0.9) !important;
     backdrop-filter: saturate(200%) blur(25px);
 }
+
+
+.board{
+    z-index: 10
+}
+
+.title{
+    color: hsl(218, 81%, 95%)
+}
+.text{
+    color: hsl(218, 81%, 75%)
+}
+.text1{
+    color: hsl(218, 81%, 85%)
+}

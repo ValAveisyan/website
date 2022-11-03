@@ -1,10 +1,19 @@
-<nav class="navbar bg-primary p-2 px-3">
-    <a routerLink="/admin" class='navbar-brand fs-3  text-white fw-bold' style="font-family: inherit">{{title}}</a>
+<nav class="navbar bg-primary p-2 px-3 w-100">
+    <a
+            routerLink="/admin"
+            class="navbar-brand fs-3 text-white fw-bold"
+    >{{title}}
+    </a>
+
     <ul class="nav navbar-pills">
         <li><a href="#" class="nav-link text-white fw-bold" routerLink="/admin/home">Home</a></li>
-        <li *ngFor="let user of userData"><img class="rounded-circle shadow"  mat-button [matMenuTriggerFor]="menu"
-                                               [src]="user.img" alt=""
-                                               style="height: 50px; width: 50px"></li>
+        <li class="nav-link text-white fw-bold" >{{data.firstName}}</li>
+        <li *ngFor="let user of userData">
+            <img class="rounded-circle shadow img"
+                 mat-button [matMenuTriggerFor]="menu"
+                 [src]="user.img" [alt]="user.name"
+                 >
+        </li>
     </ul>
     <mat-menu class="bg-primary shadow" #menu="matMenu">
         <button mat-menu-item routerLink="/admin/myAccount">My Account</button>

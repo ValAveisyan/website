@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MyAccService} from "../../services/my-acc.service";
 import {IUser} from "../../data/user";
+import {AuthService} from "../../../../services/auth.service";
+import {IDataAcc} from "../../../../Interfaces/dataAccount";
 
 @Component({
 	selector: 'app-header',
@@ -11,23 +13,26 @@ import {IUser} from "../../data/user";
 export class HeaderComponent implements OnInit {
 
 	public title: string = "ValBooK";
+	public userData!: IUser[];
+	public data!: IDataAcc;
+
 
 	constructor(private route: Router,
-				public usersService: MyAccService) {
+				private usersService: MyAccService,
+				private authService: AuthService) {
 	}
 
 	ngOnInit(): void {
 		this.usersService.getPersonalList().subscribe(data => {
 			this.userData = data
-		})
-	}
+		});
 
-	public userData!: IUser[];
+		this.data = this.authService.getData(this.data)
+
+	}
 
 	logout() {
 		this.route.navigate(['login'])
 	}
-
-
 
 }

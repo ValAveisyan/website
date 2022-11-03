@@ -5,11 +5,11 @@
             <div class="col-lg-10 p-5 border shadow mt-3 mb-4 bg-white rounded">
                 <div class="row" >
                     <div class="col-lg-3">
-                        <img [src]="img"  alt="" class="rounded-circle"
+                        <img [src]="img" [alt]="img" class="rounded-circle"
                              style="width: 168px;height: 168px">
                     </div>
                     <div class="col-lg-9">
-                        <h3>Val Avetisyan</h3>
+                        <h3>{{data.firstName}}</h3>
                         <p>Admin</p>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                                 Like | {{like ? user.like + 1 : user.like }}
                             </button>
 
-                                <button class="btn-primary btn" style="margin-left: 20px">
+                                <button class="btn-primary btn com">
                                     <i class="fa fa-comment" aria-hidden="true"></i>
                                     Comment
                                 </button>

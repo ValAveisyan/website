@@ -1,4 +1,9 @@
-
+.border{
+    background-color:rgba(128,128,128,0.1)
+}
+.borderPost{
+    margin-left: 50px
+}
 .inpPost {
     border-radius: 10px;
     width: 450px;

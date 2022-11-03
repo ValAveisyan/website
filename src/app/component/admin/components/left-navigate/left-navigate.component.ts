@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ILeftNavigate} from "../../data/products";
+import {ILeftNavigate} from "../../data/menu";
 
 @Component({
   selector: 'app-left-navigate',

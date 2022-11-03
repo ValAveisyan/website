@@ -1,10 +1,10 @@
-<div class="row w-100" style="background-color:rgba(128,128,128,0.1)">
+<div class="row w-100 border">
 
     <div class="col-lg-2 border shadow mt-5 p-4">
         <app-left-navigate *ngFor="let product of products" [product]="product"></app-left-navigate>
     </div>
 
-    <div class="col-lg-6" style="margin-left: 50px">
+    <div class="col-lg-6 borderPost">
         <div class="d-flex justify-content-center">
             <form [formGroup]="form" (ngSubmit)="submit()">
                 <input type="text" formControlName="com"
@@ -15,9 +15,7 @@
                 </button>
             </form>
         </div>
-
         <app-main></app-main>
-
     </div>
 </div>
 

@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ILeftNavigate} from "../../data/products";
-import {leftNavigation} from "../../data/product/products";
+import {ILeftNavigate} from "../../data/menu";
+import {leftNavigation} from "../../data/menu/leftMenu";
 import {AdminService} from "../../services/admin.service";
 import {Observable} from "rxjs";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {IUser} from "../../data/user";
+import {AuthService} from "../../../../services/auth.service";
+import {IDataAcc} from "../../../../Interfaces/dataAccount";
 
 
 @Component({
@@ -14,43 +15,47 @@ import {IUser} from "../../data/user";
 })
 export class HomeComponent implements OnInit {
 
+	public products: ILeftNavigate[] = leftNavigation;
+	private img: string = "../assets/img/banner.jpg";
+	public data!: IDataAcc;
 
-	constructor(public usersService: AdminService) {
-	}
-
-	form: FormGroup = new FormGroup({
+	public form: FormGroup = new FormGroup({
 		com: new FormControl<string>('', [
 			Validators.required,
 			Validators.minLength(7),
 			Validators.pattern("[a-zA-Z ]*")]),
-		img:new FormControl<string>('')
+		img: new FormControl<string>('')
 	});
 
-	ngOnInit(): void {
+	constructor(private usersService: AdminService,
+				private authService: AuthService) {
 	}
 
-	private img: string = "../assets/img/banner.jpg";
+	ngOnInit(): void {
+		this.data = this.authService.getData(this.data);
+	}
 
 	submit() {
-
-		this.usersService.create(
-			{
-				name: 'Val Avetisyan',
-				id: -(new Date().getTime()),
-				role: 'Admin',
-				avatar: this.img,
-				img: "../assets/img/pic.jpg",
-				comments: [{
-					name: 'Val',
-					avatar: "../assets/img/pic.jpg",
-					com: 'hello'
-				}],
-				like: 0,
-				caption: this.form.value.com
-			});
-
+		if (this.form.value.com) {
+			if (this.form.value.com.length > 5) {
+				this.usersService.create(
+					{
+						name: this.data.firstName,
+						id: -(new Date().getTime()),
+						role: 'Admin',
+						avatar: this.img,
+						img: "../assets/img/pic.jpg",
+						comments: [{
+							name: 'Val',
+							avatar: "../assets/img/pic.jpg",
+							com: 'hello'
+						}],
+						like: 0,
+						caption: this.form.value.com
+					});
+				this.form.reset()
+			}else {alert('text must be at least 5 letters long')}
+		}
 	}
-
-	products: ILeftNavigate[] = leftNavigation;
 
 }

@@ -1,20 +1,3 @@
-.inputCom{
-    border-radius: 15px;
-    outline: none;
-    border: none;
-    padding:8px;
-    width: 250px;
-    background-color:rgba(128,128,128,0.2);
-}
-.btnCom{
-    border: none;
-}
-
-.btnCom:hover{
-    color: #44006b;
-    border-bottom: 1px solid;
-}
-
 
 * {
     margin: 0;

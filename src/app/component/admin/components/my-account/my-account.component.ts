@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IUser} from "../../data/user";
-import {MyAccService} from "../../services/my-acc.service";
 import {AdminService} from "../../services/admin.service";
+import {AuthService} from "../../../../services/auth.service";
+import {IDataAcc} from "../../../../Interfaces/dataAccount";
 
 @Component({
 	selector: 'app-my-account',
@@ -10,22 +11,23 @@ import {AdminService} from "../../services/admin.service";
 })
 export class MyAccountComponent implements OnInit {
 
-	constructor(private usersService: AdminService) {
-	}
-
+	public like: boolean = false;
 	public users!: IUser[];
+	public img: string = "../assets/img/banner.jpg";
+	public data!: IDataAcc;
+
+	constructor(private usersService: AdminService,
+				private authService:AuthService) {}
 
 	ngOnInit(): void {
-		this.usersService.getPersonalList().subscribe(() => this.users = this.usersService.Post.filter(
-			u => u.name === 'Val Avetisyan'));
+		this.usersService.getPersonalList().subscribe(
+			() =>
+			this.users = this.usersService.Post.filter(u => u.name === this.data.firstName)
+		);
+		this.data = this.authService.getData(this.data);
 	}
-
-	public like: boolean = false;
 
 	clickLike() {
 		this.like = !this.like;
-	};
-
-	public img: string = "../assets/img/banner.jpg";
-
+	}
 }

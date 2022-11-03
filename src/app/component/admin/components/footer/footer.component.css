@@ -1,2 +1,5 @@
 
 @import "~font-awesome/css/font-awesome.min.css";
+.colorFoo{
+    background-color: rgba(0, 0, 0, 0.025)
+}

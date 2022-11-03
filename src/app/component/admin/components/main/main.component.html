@@ -23,75 +23,10 @@
 <div class="inputDiv">
     <input type="search"
            class="search"
-           placeholder="Search post..."
+           placeholder="Search user..."
            [(ngModel)]="term">
 </div>
 
-<div *ngFor="let user of userData | filterUsers:term">
-    <div class="container bg-white p-0 mt-4 shadow" style="border-radius: 10px">
-        <div class="p-3">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img [src]="user.avatar" alt="" class="shadow"
-                                 style="height: 50px;width: 50px; border-radius: 50%">
-                        </div>
-                        <div class="col-sm-10">
-                            <p><strong>{{user.name}}</strong> <br> {{user.role}} </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <button (click)="deletePost(user.id)" class="btn btn-danger p-2">Delete Post</button>
-                </div>
-            </div>
+<app-users-post *ngFor="let user of userData | filterUsers:term" [user]="user">
 
-            <div class="mt-1 p-1"> {{user.caption}}</div>
-        </div>
-
-        <div>
-            <img [src]="user.img" alt="" style="width: 100%" class="rounded">
-        </div>
-
-        <div class="p-3">
-            <div class="d-flex ">
-                <button (click)="clickLike()" class="btn btn-primary p-2"><i class="fa fa-thumbs-up"
-                                                                             aria-hidden="true"></i>
-                    Like | {{like ? user.like + 1 : user.like }}
-                </button>
-
-                <button class="btn-primary btn p-2" style="margin-left: 20px">
-                    <i class="fa fa-comment" aria-hidden="true"></i>
-                    comment
-                </button>
-            </div>
-
-            <div class="mt-2">
-                <form [formGroup]="form" (ngSubmit)="sub(user.name)">
-                    <input formControlName="com"
-                           type="text"
-                           class="w-75 inputCom"
-                           placeholder="Type...">
-                </form>
-            </div>
-            <button (click)="show(user.name)"
-                    class="btnCom text-black bg-white">
-                {{showTF ? "Close comments" : "Show comments..."}}</button>
-            <div *ngIf="showTF">
-                <div class="mt-3 d-flex" *ngFor="let u of userComments">
-                    <div>
-                        <img [src]="u.avatar" alt="" style="
-            height: 50px;width: 50px; border-radius: 50%">
-                    </div>
-                    <div>
-                        <div class="mx-3 p-2 border bg-primary" style="border-radius:13px">
-                            <span class="text-white"> <span class="fw-bold">{{u.name}}</span><br> {{u.com}}</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="mt-3">{{userComments.length}} comment</p>
-            </div>
-        </div>
-    </div>
-</div>
+</app-users-post>

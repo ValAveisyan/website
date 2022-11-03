@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {AdminRoutingModule} from './admin-routing.module';
@@ -15,6 +15,7 @@ import {MyAccountComponent} from './components/my-account/my-account.component';
 import {FilterUsersPipe} from './pipe/filter-users.pipe';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatMenuModule} from "@angular/material/menu";
+import {UsersPostComponent} from './components/users-post/users-post.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {MatMenuModule} from "@angular/material/menu";
 		LeftNavigateComponent,
 		MainComponent,
 		MyAccountComponent,
-		FilterUsersPipe
+		FilterUsersPipe,
+		UsersPostComponent
 	],
 	imports: [
 		CommonModule,

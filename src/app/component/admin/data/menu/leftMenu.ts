@@ -1,4 +1,4 @@
-import {ILeftNavigate} from "../products";
+import {ILeftNavigate} from "../menu";
 
 export const leftNavigation: ILeftNavigate[] = [
 	{
